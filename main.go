@@ -1,10 +1,9 @@
 package main
 
 import (
+	"deck"
 	"fmt"
 	"strings"
-
-	"github.com/gophercises/deck"
 )
 
 type Hand []deck.Card
@@ -123,8 +122,10 @@ func main() {
 		gs = Deal(gs)
 
 		var input string
+		fmt.Println("============NEW GAME ============")
 		for gs.State == StatePlayerTurn {
-			fmt.Println("Player:", gs.Player)
+			pScore := gs.Player.Score()
+			fmt.Println("Player:", gs.Player, "\tScore:", pScore)
 			fmt.Println("Dealer:", gs.Dealer.DealerString())
 			fmt.Println("What will you do? (h)it, (s)tand")
 			fmt.Scanf("%s\n", &input)
